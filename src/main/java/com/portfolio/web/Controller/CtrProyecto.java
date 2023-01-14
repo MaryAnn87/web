@@ -46,7 +46,7 @@ public class CtrProyecto {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!svcProyecto.existsById(id)) {
-            return new ResponseEntity(new Mensaje(" Id de proyecto no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new Mensaje("Id de proyecto no existe"), HttpStatus.NOT_FOUND);
         }
         svcProyecto.delete(id);
         return new ResponseEntity(new Mensaje("Proyecto eliminado"), HttpStatus.OK);
@@ -59,7 +59,7 @@ public class CtrProyecto {
             return new ResponseEntity(new Mensaje("el nombre de proyecto es obligatorio"), HttpStatus.BAD_REQUEST);
         }
         if (svcProyecto.existsByNombrePr(dtoProyecto.getNombrePr())) {
-            return new ResponseEntity(new Mensaje("Esa proyecto ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Ese proyecto ya existe"), HttpStatus.BAD_REQUEST);
         }
 
         Proyecto proyecto = new Proyecto(dtoProyecto.getNombrePr(), dtoProyecto.getDescripcionPr(), dtoProyecto.getLinkPr());

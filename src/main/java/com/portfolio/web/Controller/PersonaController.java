@@ -46,15 +46,15 @@ public class PersonaController {
  @PostMapping("/crear")
     public ResponseEntity<?> create(@RequestBody DtoPersona dtoPersona) {
         if (StringUtils.isBlank(dtoPersona.getNombre())) {
-            return new ResponseEntity(new Mensaje("el nombre de proyecto es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("el nombre de la persona es obligatorio"), HttpStatus.BAD_REQUEST);
         }
         if (impPersonaService.existsByNombre(dtoPersona.getNombre())) {
-            return new ResponseEntity(new Mensaje("Esa proyecto ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa persona ya existe"), HttpStatus.BAD_REQUEST);
         }
 
         Persona persona = new Persona(dtoPersona.getNombre(), dtoPersona.getApellido(), dtoPersona.getDescripcion(), dtoPersona.getTituloProfesion(), dtoPersona.getImg());
         impPersonaService.save(persona);
-        return new ResponseEntity(new Mensaje("Proyecto agregado exitosamente"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Persona agregada exitosamente"), HttpStatus.OK);
     }
 
     /*DeleteMapping("/delete/{id}")
