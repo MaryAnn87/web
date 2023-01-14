@@ -52,7 +52,7 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("Esa persona ya existe"), HttpStatus.BAD_REQUEST);
         }
 
-        Persona persona = new Persona(dtoPersona.getNombre(), dtoPersona.getApellido(), dtoPersona.getDescripcion(), dtoPersona.getTituloProfesion(), dtoPersona.getImg());
+        Persona persona = new Persona(dtoPersona.getNombre(), dtoPersona.getApellido(), dtoPersona.getTituloProfesion(), dtoPersona.getDescripcion(), dtoPersona.getImg());
         impPersonaService.save(persona);
         return new ResponseEntity(new Mensaje("Persona agregada exitosamente"), HttpStatus.OK);
     }
@@ -82,14 +82,14 @@ public class PersonaController {
         if (StringUtils.isBlank(dtoPersona.getApellido())) {
             return new ResponseEntity(new Mensaje("El campo no debe estar vacio!"), HttpStatus.BAD_REQUEST);
         }
+        if (StringUtils.isBlank(dtoPersona.getTituloProfesion())) {
+            return new ResponseEntity(new Mensaje("El campo no debe estar vacio!"), HttpStatus.BAD_REQUEST);
+        }
         if (StringUtils.isBlank(dtoPersona.getDescripcion())) {
             return new ResponseEntity(new Mensaje("El campo no debe estar vacio!"), HttpStatus.BAD_REQUEST);
         }
-        if (StringUtils.isBlank(dtoPersona.getImg())) {
-            return new ResponseEntity(new Mensaje("El campo no debe estar vacio!"), HttpStatus.BAD_REQUEST);
-        }
 
-        if (StringUtils.isBlank(dtoPersona.getTituloProfesion())) {
+        if (StringUtils.isBlank(dtoPersona.getImg())) {
             return new ResponseEntity(new Mensaje("El campo no debe estar vacio!"), HttpStatus.BAD_REQUEST);
         }
 
@@ -98,9 +98,9 @@ public class PersonaController {
 
         persona.setNombre(dtoPersona.getNombre());
         persona.setApellido(dtoPersona.getApellido());
+        persona.setTituloProfesion(dtoPersona.getTituloProfesion());
         persona.setDescripcion(dtoPersona.getDescripcion());
         persona.setImg(dtoPersona.getImg());
-        persona.setTituloProfesion(dtoPersona.getTituloProfesion());
 
         impPersonaService.save(persona);
 
