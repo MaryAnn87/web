@@ -42,8 +42,8 @@ public class PersonaController {
         Persona persona = impPersonaService.getOne(id).get();
         return new ResponseEntity(persona, HttpStatus.OK);
     }
-    
- @PostMapping("/crear")
+
+    @PostMapping("/crear")
     public ResponseEntity<?> create(@RequestBody DtoPersona dtoPersona) {
         if (StringUtils.isBlank(dtoPersona.getNombre())) {
             return new ResponseEntity(new Mensaje("el nombre de la persona es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -65,7 +65,6 @@ public class PersonaController {
         impPersonaService.delete(id);
         return new ResponseEntity(new Mensaje("Persona eliminada"), HttpStatus.OK);
     }*/
-
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoPersona dtoPersona) {
         if (!impPersonaService.existsById(id)) {
@@ -89,7 +88,7 @@ public class PersonaController {
         if (StringUtils.isBlank(dtoPersona.getImg())) {
             return new ResponseEntity(new Mensaje("El campo no debe estar vacio!"), HttpStatus.BAD_REQUEST);
         }
-        
+
         if (StringUtils.isBlank(dtoPersona.getTituloProfesion())) {
             return new ResponseEntity(new Mensaje("El campo no debe estar vacio!"), HttpStatus.BAD_REQUEST);
         }
