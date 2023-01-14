@@ -55,8 +55,8 @@ public class CtrExperiencia {
     public ResponseEntity<?> create(@RequestBody DtoExperiencia dtoexp){
        if(StringUtils.isBlank(dtoexp.getNombreE()))
            return new ResponseEntity(new Mensaje("el nombre de experiencia es obligatorio"),HttpStatus.BAD_REQUEST);
-       if(svcExperiencia.existsByNombreE(dtoexp.getNombreE()))
-           return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
+       /*if(svcExperiencia.existsByNombreE(dtoexp.getNombreE()))
+           return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);*/
        
        Experiencia experiencia = new Experiencia (dtoexp.getNombreE(),dtoexp.getTituloPuesto(),dtoexp.getPeriodo(), dtoexp.getDescripcionE());
        svcExperiencia.save(experiencia);
@@ -72,8 +72,8 @@ public class CtrExperiencia {
           return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
       
         //Compara nombre de cada experiencia
-      if(svcExperiencia.existsByNombreE(dtoexp.getNombreE())&& svcExperiencia.getByNombreE(dtoexp.getNombreE()).get().getId() != id)
-          return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
+      /*if(svcExperiencia.existsByNombreE(dtoexp.getNombreE())&& svcExperiencia.getByNombreE(dtoexp.getNombreE()).get().getId() != id)
+          return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);*/
       
        //valida que el campo no este vacio
       if(StringUtils.isBlank(dtoexp.getNombreE()))

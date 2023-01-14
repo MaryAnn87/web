@@ -59,9 +59,9 @@ public class CtrEducacion {
         if (StringUtils.isBlank(dtoedu.getNombreInstitucion())) {
             return new ResponseEntity(new Mensaje("el nombre de educacion es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if (svcEducacion.existsByNombreInstitucion(dtoedu.getNombreInstitucion())) {
+        /*if (svcEducacion.existsByNombreInstitucion(dtoedu.getNombreInstitucion())) {
             return new ResponseEntity(new Mensaje("Esa educacion ya existe"), HttpStatus.BAD_REQUEST);
-        }
+        }*/
 
         Educacion educacion = new Educacion(dtoedu.getNombreInstitucion(), dtoedu.getTituloEd(), dtoedu.getPeriodo(), dtoedu.getDescripcionEd());
         svcEducacion.save(educacion);
